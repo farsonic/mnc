@@ -1,0 +1,8 @@
+MNC - Multicast NetCat
+======================
+
+Run mnc with no arguments for help, or read the manpage
+
+To install:
+
+./configure ; make ; make install
