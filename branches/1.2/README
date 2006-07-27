@@ -1,0 +1,28 @@
+                             MNC - Multicast NetCat
+                            -----------------------
+
+1. Introduction
+
+mnc is a simple, one-direction-at-a-time, "netcat"-like application using
+multicast. The aim is to provide a tool for easy debugging and testing when
+setting up a multicast network or host. MNC supports IPv4 and IPv6
+any-source-multicast and single-source-multicast.
+
+man doc/mnc.1 for information and help on how to run multicast.
+
+2. Supported platforms
+
+As of September 2004, mnc has been compiled and tested with Linux 2.6.8 kernels
+and the BSD KAME stack. Currently automatic interface selection does not work
+on a KAME-based host and you will need to specify the interface when in
+listening mode.
+
+3. Installing mnc from source
+
+	./configure ; make ; make install
+
+4. Reporting problems
+
+Any problems, bugs or suggested features should be mailed to colm.maccarthaigh
+at heanet.ie.
+
