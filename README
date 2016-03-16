@@ -61,3 +61,45 @@ support IPv6 due to underlying limitation in the Operating System.
 
 Any problems, bugs or suggested features should be mailed to colm
 at apache.org.
+
+6. Usage 
+
+
+NG-MVPN testing with SRX
+Sunday, December 1, 2013
+I've been doing some testing with NextGen Multicast VRF support on some SRX220's. I've been using the MNC utility https://code.google.com/p/mnc/ to do my testing and found it to be a good tool for the job and have it running on a pari of raspberry PI's that are powered from the front of the SRX220's.
+
+So, grab the code, uncompress and build as follows;
+
+./autoconf
+
+./configure
+
+make
+
+sudo make install
+
+Once you have the mnc binary compiled you simply run one instance as a multicast sender and one as a receiver. I've concocted the following simple bash loop to send the time in seconds since epoch to a multicast group which allows me to take simple measurements when failing over LSP's etc.
+
+Server side
+
+while true; do printf "IPv4 Multicast --> " ; date +%s ;sleep 1;done| mnc -p 1234 236.1.1.2
+
+Client side
+
+/mnc -l -p 1234 236.1.1.2
+
+If all is working on the client side you will see this constantly…in one second increments.
+
+pi@MC-Server ~ $ ./mnc -l -p 1234 236.1.1.2
+
+IPv4 Multicast --> 1385898549
+IPv4 Multicast --> 1385898550
+IPv4 Multicast --> 1385898551
+IPv4 Multicast --> 1385898552
+IPv4 Multicast --> 1385898553
+IPv4 Multicast --> 1385898554
+
+The only other trickery I've had to modify was the IGMP version on my Linux box which defaulted to 0, 
+effectively using the highest version available to it. I hardcoded this to 2 which resolved any IGMP 
+issues I was having. (sudo echo 2 >  /proc/sys/net/ipv4/conf/eth0/force_igmp_version)
