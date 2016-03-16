@@ -88,3 +88,7 @@ IPv4 Multicast --> 1385898554
 The only other trickery I've had to modify was the IGMP version on my Linux box which defaulted to 0, 
 effectively using the highest version available to it. I hardcoded this to 2 which resolved any IGMP 
 issues I was having. (sudo echo 2 >  /proc/sys/net/ipv4/conf/eth0/force_igmp_version)
+
+If you have multiple interfaces ensure multicast is routing over the correct one, for example. 
+
+route add -net 224.0.0.0 netmask 240.0.0.0 dev eth1 
