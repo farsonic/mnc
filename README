@@ -64,22 +64,7 @@ at apache.org.
 
 6. Usage 
 
-
-NG-MVPN testing with SRX
-Sunday, December 1, 2013
-I've been doing some testing with NextGen Multicast VRF support on some SRX220's. I've been using the MNC utility https://code.google.com/p/mnc/ to do my testing and found it to be a good tool for the job and have it running on a pari of raspberry PI's that are powered from the front of the SRX220's.
-
-So, grab the code, uncompress and build as follows;
-
-./autoconf
-
-./configure
-
-make
-
-sudo make install
-
-Once you have the mnc binary compiled you simply run one instance as a multicast sender and one as a receiver. I've concocted the following simple bash loop to send the time in seconds since epoch to a multicast group which allows me to take simple measurements when failing over LSP's etc.
+Once you have the mnc binary compiled you simply run one instance as a multicast sender and one as a receiver. 
 
 Server side
 
