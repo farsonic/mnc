@@ -33,7 +33,7 @@ kernels, the BSD KAME stack and Windows XP Profesional. Currently automatic
 interface selection does not work on a KAME-based host and you will need to
 specify the interface when in listening mode.
 
-3. Installing mnc from source on UNIX:
+3. Installing mnc from source on UNIX: (you will need to make configure executable) 
 
 	./configure ; make ; make install
 
@@ -72,7 +72,7 @@ while true; do printf "IPv4 Multicast --> " ; date +%s ;sleep 1;done| mnc -p 123
 
 Client side
 
-/mnc -l -p 1234 236.1.1.2
+./mnc -l -p 1234 236.1.1.2
 
 If all is working on the client side you will see this constantly…in one second increments.
 
